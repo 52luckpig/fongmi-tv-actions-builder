@@ -221,7 +221,7 @@ jobs:
           chmod +x gradlew
 
           # Build release APK with signing
-          ./gradlew assembleRelease \
+          ./gradlew assembleDebug --no-daemon --stacktrace \
             -Pandroid.injected.signing.store.file="$GITHUB_WORKSPACE/keystore.jks" \
             -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
             -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
