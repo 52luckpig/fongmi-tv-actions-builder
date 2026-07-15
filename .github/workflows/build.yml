@@ -25,8 +25,8 @@ jobs:
 
     env:
       # Build configuration
-      SOURCE_REPO: "FongMi/TV"
-      SOURCE_BRANCH: "fongmi"
+      SOURCE_REPO: "takagen99/Box"
+      SOURCE_BRANCH: "main"
       API_RETRY_COUNT: 3
       API_RETRY_DELAY: 5
 
