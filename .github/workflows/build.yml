@@ -77,7 +77,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: "temurin"
-          java-version: "17"
+          java-version: "11"
           cache: "gradle"
 
       - name: Set up Python 3.10
@@ -141,6 +141,20 @@ jobs:
         run: |
           echo "🔨 Building release APKs..."
           cd src
+          echo "?? Fixing missing compileSdk in app/build.gradle..."
+          APP_GRADLE="app/build.gradle"
+          if [ -f "$APP_GRADLE" ]; then
+            if ! grep -q "compileSdk" "$APP_GRADLE"; then
+              echo "   ??  compileSdk not found, inserting..."
+              sed -i '/android {/a \ \ \ \ compileSdk 33' "$APP_GRADLE"
+              echo "   ? Fixed!"
+          else
+              echo "   ? compileSdk already exists, skipping fix"
+          fi
+          else
+            echo "   ? app/build.gradle not found!"
+            exit 1
+          fi
           chmod +x gradlew
 
           # Build release APK with signing
