@@ -254,7 +254,7 @@ jobs:
             📦 **Downloads:**
             APK files are attached to this release. Choose the appropriate variant for your device.
 
-          files: src/**/build/outputs/apk/**/release/*.apk
+          files: src/**/build/outputs/apk/**/debug/*.apk
           draft: false
           prerelease: false
         env:
