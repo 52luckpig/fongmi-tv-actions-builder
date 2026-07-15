@@ -168,7 +168,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Decode signing keystore
-        if: steps.check_build.outputs.build_needed == 'true'
+        if: false
         run: |
           echo "🔐 Decoding signing keystore..."
           if [ -z "$KEYSTORE_BASE64" ]; then
@@ -183,7 +183,7 @@ jobs:
           echo "✅ Keystore decoded successfully"
 
       - name: Prepare Android local.properties
-        if: steps.check_build.outputs.build_needed == 'true'
+        if: false
         run: |
           echo "📝 Preparing Android local.properties for CI..."
 
@@ -254,7 +254,7 @@ jobs:
             📦 **Downloads:**
             APK files are attached to this release. Choose the appropriate variant for your device.
 
-          files: src/**/build/outputs/apk/**/debug/*.apk
+          files: src/**/build/outputs/apk/debug/*.apk
           draft: false
           prerelease: false
         env:
